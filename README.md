@@ -37,11 +37,22 @@ Copy the SSH URL and use it in the following command.
 
     git remote add openshift ssh://0123456789abcdef01234567@clojureapp-yourdomain.rhcloud.com/~/git/clojureapp.git/
     
-. There are three changes to make to the code to run the app on OpenShift. Firstly, open _project.clj_ and change the value for _:main_ from _global-growth.core_ to _global-growth.web_. This makes _web.clj_ the place Clojure looks for a main method when you issue the command `lein run`.
+. There are three changes to make to the code to run the app on OpenShift. Firstly, open _project.clj_ and change the value for _:main_ from _global-growth.core_ to _global-growth.web_. This makes _web.clj_ the place Clojure looks for a main function when you issue the command `lein run`.
 
 . Next, open *src/global_growth/web.clj*. At the top of the file, add a require statement for Jetty like this:
 
     [ring.adapter.jetty :as jetty]
+    
+Your require block should now look something like this:
+
+    (ns global-growth.web
+      (:require [global-growth.core :as api]
+                [compojure.core :refer [defroutes GET]]
+                [compojure.handler :refer [site]]
+                [hiccup.core :as hiccup]
+                [hiccup.page :as page]
+                [hiccup.form :as form],
+                [ring.adapter.jetty :as jetty]))
 
 . Finally, at the very bottom of _web.clj_, add the following code:
 
@@ -57,7 +68,9 @@ This tells the app what port and host to use when it is running on OpenShift, us
     git add .
     git commit -m "Added required changes for code to run on OpenShift"
     git push -f openshift master
-    
+
+The `-f` for force is only needed the first time you push the code, to tell Git to completely override the content that is in the Git repository on OpenShift that is created for you by default. If you make more changes to the app code, you can deploy them on OpenShift with another cycle of `git add .`, `git commit -m "Explain changes in message"`, and `git push openshift master`.
+
 . Paste the app URL in a browser to see the app live on the web. You can check the URL with the following command:
 
     rhc app show -a globalgrowth
