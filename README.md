@@ -15,6 +15,8 @@ If you have created the Global Growth web app following the ClojureBridge instru
 
 . Install SSH, Git and Ruby on your machine, if you don't already have them.
 
+. Create an account on [OpenShift.com](https://www.openshift.com/app/account/new), if you don't yet have one.
+
 . Install the [RHC command line tools](https://www.openshift.com/developers/rhc-client-tools-install), which usually just means running the command `gem install rhc`.
 
 . Run the command `rhc setup`.
