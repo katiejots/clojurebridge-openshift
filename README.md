@@ -69,7 +69,7 @@ This tells the app what port and host to use when it is running on OpenShift, us
     git commit -m "Added required changes for code to run on OpenShift"
     git push -f openshift master
 
-The `-f` for force is only needed the first time you push the code, to tell Git to completely override the content that is in the Git repository on OpenShift that is created for you by default. If you make more changes to the app code, you can deploy them on OpenShift with another cycle of `git add .`, `git commit -m "Explain changes in message"`, and `git push openshift master`.
+The `-f` for force is only needed the first time you push the code, to tell Git to completely override the template content that is in the OpenShift repository by default. If you make more changes to the app code, you can deploy them on OpenShift with another cycle of `git add .`, `git commit -m "Explain changes in message"`, and `git push openshift master`.
 
 . Paste the app URL in a browser to see the app live on the web. You can check the URL with the following command:
 
