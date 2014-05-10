@@ -25,7 +25,7 @@ If you have created the Global Growth web app following the ClojureBridge instru
 
 . Run the following command to create an OpenShift Clojure app called _globalgrowth_:
 
-        rhc app create globalgrowth http://cartreflect-claytondev.rhcloud.com/github/openshift-cartridges/clojure-cartridge -s --no-git
+    rhc app create globalgrowth http://cartreflect-claytondev.rhcloud.com/github/openshift-cartridges/clojure-cartridge -s --no-git
 
 Once it has finished running, you should see a line in the output containing a URL like this:
 
